@@ -1,0 +1,13 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<section class="outside-app">
+  <h1>
+    ${_("Currently the {platform_name} servers are overloaded").format(
+        platform_name=u"<em>{}</em>".format(platform_name=settings.PLATFORM_NAME)
+    )}
+  </h1>
+  <p>
+    ${_("Our staff is currently working to get the site back up as soon as possible. Please contact support to report any problems or downtime.")}
+  </p>
+</section>

@@ -1,0 +1,91 @@
+## mako
+<%!
+  from django.conf import settings
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+    <%inherit file="/main.html" />
+
+<%namespace name='static' file='/static_content.html'/>
+<%!
+  from datetime import date
+%>
+        <%block name="title"><title>${_('Frequently Asked Questions')}</title></%block>
+
+<section class="static-container tos">
+    <br>
+    <h1 style="text-align: left;">Frequently Asked Questions</h1>
+    <h2><b>SUPPORT HOURS</b></h2>
+    Time Zone: Pacific Standard Time (PST)<br>
+    Period: Monday to Friday, EXCLUDING HOLIDAYS<br>
+    Hours: 9:00 AM - 5:00 PM, ONE DAY RESPONSE TIME<br>
+    <br>    
+    <h2><b>BROWSER COMPATIBILITY</b></h2>
+    <p>The following table shows details about the operating systems and browser support.</p><br>         
+    <style type="text/css">
+         .tg  {border-collapse:collapse;border-spacing:0;outline-style:solid;outline-color:#5882FA;outline-width: 1px;}
+         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-width:1px;border-bottom-style:solid;overflow:hidden;word-break:normal;border-color:#5882FA;}
+         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-bottom-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#5882FA;}
+        
+         .tg .tg-yw4l{vertical-align:top;}
+    </style>
+
+    <table class="tg">
+                <tr bgcolor="#5882FA">
+                <th class="tg-yw4l"></th>
+                <th class="tg-yw4l"><b>Edge</b></th>
+                <th class="tg-yw4l"><b>IE11/IE10</b></th>
+                <th class="tg-yw4l"><b>Chrome*</b></th>
+                <th class="tg-yw4l"><b>Firefox*</b></th>
+                <th class="tg-yw4l"><b>Safari*</b></th>  
+            </tr>
+            <tr bgcolor="#A9D0F5">
+                <td class="tg-yw4l"><b>Windows 8/10</b></td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">N/A</td>
+            </tr>
+            <tr>
+                <td class="tg-yw4l"><b>Mac OSX <br>Mavericks or <br> Yosemite</b></td>
+                <td class="tg-yw4l">N/A</td>
+                <td class="tg-yw4l">N/A</td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">Yes</td>
+                <td class="tg-yw4l">Yes</td>
+            </tr>
+    </table>
+    <p>*Latest versions of Chrome, Firefox and Safari</p>
+    <h2><b>GET HELP</b></h2>
+    <p><b>Please read the FAQs below first.</b></p>
+    <p>If you don&#39;t find the answer to your questions, visit the <a href="http://trainingsupport.microsoft.com/en-us/tcml/forum/tcml_mat">support forum</a></p><br>
+
+    <b>Q. Why should I consider participating?</b><br>
+    <p>Cloud computing is currently one of the hottest areas in technology and the need for cloud architects and experts is only expected to grow. To succeed in one of these new jobs, you&#39;ll need real-world knowledge as well as hands-on experience. The program is specifically designed and delivered by experts to give hands-on training in Azure.</p><br>
+    <b>Q. Who is eligible?</b><br>
+        <p>This program is open for all. Anyone who has interest in learning about cloud computing, development and deployment is welcome.</p><br>
+    <b>Q. Is this offered in languages other than English?</b><br>
+        <p>Currently, the program is only available in English. </p><br>    
+    <b>Q. Are courses only available online?</b><br>
+        <p>Yes, the courses are available online only.</p><br>
+    <b>Q. Is there any limit on the duration to complete the course? </b><br>
+        <p>You need to complete the course within the specific dates set for each course.</p><br>
+    <b>Q. What is the minimum percentage required to pass the course?</b><br>
+        <p>Your score must be at least 70% to get a passing grade.</p><br>
+    <b>Q. How do I track my course progress?</b><br>
+        <p>Open your course and select the Progress tab </p><br>
+    <b>Q. How do I obtain my course completion certificate?</b><br>
+        <p>Once you have achieved a passing score, you can select &#39;Request Certificate&#39; in the &#39;Progress&#39; tab of your course.  You may then select &#39;View Certificate&#39; from your dashboard or from the progress tab of the course itself.</p><br>
+    <b>Q. How can I share my course completion certificate with others?</b><br>
+        <p>All certificates have a unique URL that can be shared digitally. You can save the certificate as PDF file that can be sent over an electronic mail. Learners can add that URL to their LinkedIn profile with a link that appears on the certificate. Learners can also download the certificate as a PDF if they wish.</p><br>
+    <b>Q. How do I register?</b><br>
+        <p> Browse through to <a href='https://openedx.microsoft.com/register'>https://openedx.microsoft.com/register</a></p>
+    <p>The sign up process for this program is different from other Microsoft programs. You need to register for this program again even though you may already have a Microsoft account or Office 365 account. </p>
+    <p>After you register, you will receive an activation email. You must click on the activation link to complete the process. Don&#39;t see the email? Check your spam folder.</p><br>
+    <b>Q. What do I do if I am having trouble viewing a video?</b><br>
+        <p>Please click on the download video button located below the video player. See screenshot.</p><br>
+        <img src="/static/images/download_video.png" alt="download_video_img" height="400" weight="400">
+        <br>
+</section>
+

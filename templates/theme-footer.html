@@ -10,29 +10,22 @@
 
 <div class="wrapper-footer">
   <footer>
-    <div class="colophon">
+    <div class="colophon" style="width:auto">
       <nav class="nav-colophon">
         <ol>
-          <li><a href="${reverse('about')}">About</a></li>
-          <li><a href="${reverse('about')}#careers">Careers</a></li>
-          <li><a href="${reverse('about')}#contact">Contact</a></li>
-          <li><a href="${reverse('tos')}">Terms of Service</a></li>
-          <li><a href="${reverse('tos')}#privacy">Privacy Policy</a></li>
-          <li><a href="${reverse('tos')}#honor">Honor Code</a></li>
-          <li><a href="${reverse('tos')}#copyright">Copyright</a></li>
-        </ol>
-      </nav>
-    </div>
-    <div class="references">
-      <span>Built on <a href="http://code.edx.org">OpenEdX</a>.</span>
-    </div>
-
-    <div class="copyright">
-        <p><span>
-            ${_('Copyright {year}. All rights reserved.').format(
-                year=date.today().year
-            )}
-        </span></p>
-    </div>
+	<li>
+            ${_('&copy; {year} Microsoft').format( year=date.today().year)}
+        </li>
+        <li><a href="https://www.microsoft.com/en-us/privacystatement/default.aspx" target="_blank">Privacy & Cookies</a></li>
+        <li><a href="${reverse('tos')}" target="_blank">Terms of Service</a></li>
+        <li><a href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx" target="_blank">Trademarks</a></li>
+	<li><a href="/faq" target="_blank">Support</a></li>
+        </ol>      
+     </nav>
+   </div>
+   <div class="references" style="width:auto" >
+       <a href="https://open.edx.org/" target="_blank"><img class="iconDetails" src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" width="160" alt="Powered by Open edX" style="vertical-align:bottom"></a>
+       <a href="https://azure.microsoft.com" target="_blank"><img src="/static/images/azure_logo.png"alt="on Microsoft Azure" style="vertical-align:bottom" width="160" height="28"></a>
+   </div>
   </footer>
 </div>

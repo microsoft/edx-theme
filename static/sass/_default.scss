@@ -9,16 +9,33 @@
 //  Color variables (from Stanford palette unless noted)
 //-----------------
 
-//Main Color Variables
-$main-color: #f7691f;
-$dark-color: #ea281f; //Link Color
+// MS Blue Color: CourseName, footer links, top left buttons and other buttons (the one on the course page), also the links on the page texts get that color.
+// This is the common MS Blue colour for all MS sites.
+$ms-color: #0072c6;
+
+// Main Color variables
+// White Color
+$main-color: #FFFFFF;
+
+// Main Page, Course tile border color
+$ms-border: #D2D2D2;
+
+// MS Button Colors
+$ms-primary-button-hover: #00188F;
+$ms-secondary-button-hover: #D2D2D2;
+$ms-secondary-button-border: #737373;
+$ms-primary-button-text: #333333;
+
+$dark-color: $ms-color; //Link Color
 $light-color: #f4e00c; //Selected Header BG Color, ie. calendar        ***Custom, not from palette***
 $bg-color: #f7fe81; //Selected Content BG Color, ie. calendar          ***Custom, not from palette***
 
 //Main BG Color Variables
-$main-bg: #822537;
-$main-bg-60: lighten($main-bg, 18.5%); //Main Border/HR Color
-$main-bg-25: lighten($main-bg, 25%); 
+$main-bg: $ms-color;
+
+// Pop-up takes this color and the course pages lines take the colors here
+$main-bg-60: lighten($ms-border, 18.5%); //Main Border/HR Color
+$main-bg-25: lighten($ms-border, 25%); 
 
 //Secondary Color Variables
 $secondary: #b5a4b7;
@@ -32,26 +49,20 @@ $gray-75: lighten($gray, 18.25%); //Lighter Text Color
 $gray-3: #e9e9e9; //Block/Course BG Color
 $gray-2: #f2f2f2;
 $gray-1: #fbfbfb; //Main BG Color
-$white: $gray-1;
 
 $black: #2e2e2e;
 $black-80: #585858;
-
-
 
 //-----------------
 //  Font Assignment
 //-----------------
 
-$theme-sans-font: 'Source Sans';
+$theme-sans-font: 'Segoe UI';
 $sans-serif: $theme-sans-font, $sans-serif;
 $body-font-family: $sans-serif;
 
-$theme-serif-font: 'Crimson Text';
+$theme-serif-font: 'Segoe UI';
 $serif: $theme-serif-font, $serif;
-
-
-
 
 //-----------------
 //  Theme Element Assignments
@@ -62,10 +73,10 @@ $container-bg: $gray-1;
 $login-register-bg: $gray-1;
 $content-wrapper-bg: $gray-1;
 $header-image: none;
-$header-bg: transparentize(lighten($secondary, 18.5%), .25);
+$header-bg: $main-color;
 $courseware-header-image: none;
 $courseware-header-bg: transparentize(lighten($secondary, 18.5%), .25);
-$footer-bg: $secondary-25;
+$footer-bg: $main-color;
 $courseware-footer-border: 1px solid $main-bg-60;
 $courseware-footer-shadow: box-shadow(2px 1px 0 rgba(0, 0, 0, .1));
 $courseware-footer-margin: 50px;
@@ -92,18 +103,17 @@ $header-graphic-sub-color: $lighter-base-font-color;
 $header-link-color: $dark-color;
 $header-link-hover: $light-color;
 
-$button-color: $main-color;
+$button-color: $ms-color;
 $button-archive-color: $gray-3;
-
 $shadow-color: $gray;
 
 // actions
 $button-bg-image: none;
-$button-bg-color: $gray-3;
-$button-bg-hover-color: $gray-1;
+$button-bg-color: $ms-color;
+$button-bg-hover-color: $ms-primary-button-hover;
 
 // actions - primary
-$action-primary-bg: $main-color;
+$action-primary-bg: $ms-color;
 $action-primary-fg: $gray-2;
 $action-primary-shadow: none;
 
@@ -121,8 +131,6 @@ $action-primary-active-focused-shadow: none;
 // disabled
 $action-primary-disabled-bg: $gray-75;
 $action-prmary-disabled-fg: $gray-1;
-
-
 
 // actions - secondary
 $action-secondary-bg: $secondary;
@@ -143,8 +151,6 @@ $action-secondary-active-focused-shadow: none;
 // disabled
 $action-secondary-disabled-bg: $gray-3;
 $action-secondary-disabled-fg: $gray;
-
-//
 
 $border-color-1: $main-bg-60;
 $border-color-2: $main-bg-60;
@@ -182,14 +188,18 @@ $header_image_margin: -77px;
 //FOOTER MARGIN
 $footer_margin: ($baseline/4) 0;
 
+$a-tags: 'a, a:active, a:hover, a:visited';
+#{$a-tags} {
+    text-decoration: none;
+}
+
 //-----------------
 //  CSS BG Images
 //-----------------
-$homepage-bg-image: url('../themes/default/images/sunrise.jpg');
-
+// Home Page Background Image
+$homepage-bg-image: url('../themes/default/images/REX_BG_1.png');
 $login-banner-image: none;
 $register-banner-image: none;
-
 $video-thumb-url: '../themes/default/images/edx.png';
 
 //-----------------
@@ -207,23 +217,310 @@ $video-thumb-url: '../themes/default/images/edx.png';
     text-align: right;
 }
 
-
 //-----------------
 // Override CSS
 //-----------------
 html {
-    background-color: $secondary-25 !important;
+    // The background color of the site
+    background-color: $main-color !important;
 }
 
 //-----------------
 // Header Styling
 //-----------------
-.home>header {
-    height: 500px;
+.home > header {
+    height: 375;
+    background-position: center top;
 
     .outer-wrapper {
         padding: 120px 0 !important;
     }
+}
+
+.home > header .title > hgroup {
+    display: block !important;
+    text-align: center !important;
+}
+
+.home > header .title > hgroup h2 {
+    text-transform: none !important;
+    font-style: normal !important;
+}
+
+
+.home > header .title > hgroup h1 {
+    text-align: center !important;
+}
+
+//--------------------------------
+// Registration/Signin link on the header
+//--------------------------------
+
+header.global .cta-register{
+    background-color: $main-color !important;
+    color: $ms-color !important;
+}
+
+// Sign in link on the header
+header.global .cta-login:hover{
+    background-color: $ms-primary-button-hover !important;
+}
+
+//------------------
+// Registration Page
+//------------------
+// The register button on the registration page
+.register-button{
+    background-color: $ms-color !important;
+    text-shadow: none;
+}
+
+.register-button:hover{
+    background-color: $ms-primary-button-hover !important;
+}
+
+.register-button:focus{
+    border: 1px dotted $ms-color !important;
+}
+
+// The secondary button (sign in button) on the registration page
+.nav-btn{
+    border: 1px solid $ms-secondary-button-border !important;
+    color: $ms-primary-button-text !important;
+}
+
+.nav-btn:focus{
+    background-color: $ms-secondary-button-hover !important;
+    box-shadow: none !important;
+    border: 1px dotted $ms-secondary-button-border !important;
+}
+
+.nav-btn:hover{
+    background-color: $ms-secondary-button-hover !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+div.cta-login a.cta-login-action{
+    color: $ms-primary-button-text !important;
+}
+
+div.cta-login a.cta-login-action:hover{
+    background-color: $ms-secondary-button-hover !important;
+    color: $ms-primary-button-text !important;
+    border: none !important;
+}
+
+.cta-register:hover {
+    text-decoration: underline !important;
+}
+
+div.main-cta > a.register {
+    border: none !important;
+    color: $main-color;
+    background-color: $ms-color;
+    background-image: none !important;
+    text-shadow: none !important;
+}
+
+div.main-cta > a.register:hover {
+    background-color: $ms-primary-button-hover !important;
+}
+
+// In the registeration and sign in page we want text fields border to be visible with grey color
+form .field * {
+    border-color: grey !important;
+}
+
+// On the side-bar of registration page Already registered Sign in butons border is made visible with grey color
+div.cta-login-action {
+    border-color: grey !important;
+}
+
+
+//------------------
+// Sign in Page
+//------------------
+.login-button{
+    background-color: $ms-color !important;
+    text-shadow: none;
+}
+
+.login-button:hover{
+    background-color: $ms-primary-button-hover !important;
+}
+
+.login-button:focus{
+    border: 1px dotted $ms-color !important;
+}
+
+.forgot-password {
+    a:hover{
+        text-decoration: underline !important;
+    }
+    color: $ms-color !important;
+}
+
+.forgot-password:hover {
+    text-decoration: underline !important;
+}
+
+.field-link:hover{
+ text-decoration: underline !important;
+}
+
+//------------------
+// View when the user logged in
+//------------------
+
+// The user dropdown menu on the right hand side
+header.global .user a.user-link{
+    padding: 5px 12px 10px 10px !important;
+    position: relative;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 500 !important;
+    letter-spacing: 0;
+    color: $main-color;
+}
+
+header.global .user .dropdown-menu li>a:hover,header.global .user .dropdown-menu li>a:focus{
+    color: $ms-color !important;
+    text-decoration: underline !important;
+}
+
+.dashboard .my-courses .empty-dashboard-message a {
+    background: $main-color;
+    background-color: $ms-color;
+    color: $main-color !important;
+    font-family: "Segoe UI","Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    text-shadow: none;
+    font-weight: 500 !important;
+}
+
+.dashboard .profile-sidebar {
+    border-top: none !important;
+}
+
+header.global .user a.user-link .icon {
+    display: inline-block;
+    float: left;
+    margin: 2px 6px -3px 3px;
+    font-size: 1.2em;
+    color: $main-color !important;
+}
+
+/*media all*/
+header.global .user > :last-child.primary > a {
+    padding: 5px 8px 10px 10px !important;
+    border: 1px solid $ms-color;
+    border-left-color: $main-color !important;
+    background: $ms-color !important;
+}
+
+header.global .user > :last-child.primary > a:hover{
+    background-color: $ms-primary-button-hover !important;
+}
+
+//-------------------------
+// Certificate top shadow and putting into grey area changes
+//-------------------------
+
+.accomplishment-rendering {
+    border-top: 0;
+    top: inherit;
+}
+
+
+.wrapper-accomplishment-rendering {
+    padding: 30px 2.85714%;
+}
+
+.layout-accomplishment .accomplishment-rendering {
+    top: inherit;
+}
+
+.layout-accomplishment .wrapper-introduction {
+    margin-bottom: 0;
+}
+
+// View on the course view page
+//------------------
+div.course-actions > a.enter-course {
+    background-color: $ms-color;
+}
+
+div.course-actions > a.enter-course:hover {
+    background-color: $ms-primary-button-hover !important;
+}
+
+// The logo height on the course view page when the user signs in
+header.global.slim h1.logo img {
+    height: inherit !important;
+}
+
+// Align find courses link when user signs in
+.nav-global-01 {
+    margin-top: 0.2em !important;
+}
+
+// Align the course name on header when user logs in and view a course
+header.global.slim h2.course-header {
+    margin-top: 1.2em !important;
+}
+
+// Hide the Limited Profile message in My Profile page since we do not let users to enter their age to promote to Full Profile
+div.wrapper-profile-field-account-privacy {
+    display: none !important;
+}
+
+// Hide the birth date on the registration page
+#field-yob {
+    display: none !important;
+}
+
+// Hide birth date from the Additional Information section of Account Settings page
+div.u-field-year_of_birth {
+    display: none !important;
+}
+
+// Hide the Preferred Language on the Account Settings page
+div.u-field-language_proficiencies {
+    display: none !important;
+}
+
+// Hide the mailing address on the registration page
+#field-address-mailing {
+    display: none !important;
+}
+
+// On the Account Settings page make the textboxes for Full Name and E-Mail visible by showing the borders for UX
+#u-field-input-name {
+    border-color: grey !important;
+}
+#u-field-input-email {
+    border-color: grey !important;
+}
+
+// hide the social media links on the course about page
+.social-sharing {
+    display: none !important;
+}
+
+// Update User View Profile/Account Settings to take the maincolor
+body.view-profile {
+    background-color: $main-color;
+}
+
+body.ltr {
+    background-color: $main-color;
+}
+
+//-----------------
+// Hide the image on the password reset page
+//-----------------
+.view-passwordreset .introduction header {
+    background-image: none !important;
 }
 
 //-----------------
@@ -239,18 +536,27 @@ html {
         .colophon {
             width: 80%;
             float: left;
-
+            margin-top: 1.1em !important; 
             .nav-colophon li {
                 display: inline-block;
                 height: 35px;
                 float: left;
                 margin: 0 20px 20px 0;
             }
+            .nav-colophon a:hover{
+                text-decoration:underline;
+                color:$ms-color !important;
+            }
         }
 
         .references {
             width: 15%;
             float: right;
+        }
+
+        // test if below hover is needed? 
+        a:hover {
+            text-decoration: underline !important;
         }
     }
 
@@ -267,6 +573,56 @@ section.tos {
     padding: 0 50px;
 
     .print {
-        margin: 50px 0;
+        margin: 200px 0;
     }
+}
+
+//------------------
+// FAQ Page Table Styling
+//------------------
+
+table.faq-table {
+    border-collapse: collapse;
+    width: 100%;
+ 
+    th, td {
+    text-align: left;
+    padding: 10px;
+    }
+    
+    tr:nth-child(even){background-color: $gray-2}
+}
+
+//------------------
+// COOKIE BANNER
+//------------------
+.cookie-banner-show {
+    padding-top: 0px !important;
+}
+
+.cookie-notice {
+    z-index: 10;
+    width: 100%;
+    height: 26px;
+    background-color: #EEEEEE !important;
+    vertical-align: central;
+}
+
+.cookie-notice-title {
+    margin-left: 20px;
+    font-weight: 600;
+}
+
+
+.cookie-color {
+    color: #000 !important;
+}
+
+.cookie-close {
+    float: right;
+    height: 10px;
+    width: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-weight: 600;
 }

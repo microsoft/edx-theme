@@ -1,0 +1,23 @@
+## mako
+<%!
+  from django.conf import settings
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%inherit file="/main.html" />
+
+<%namespace name='static' file='/static_content.html'/>
+<%!
+  from datetime import date
+%>
+
+<%block name="title"><title>${_('Disclosure Notice')}</title></%block>
+
+<section class="static-container tos">
+    <p><br></p>
+    <h2 style="text-align: center;" id="disclosure">${_('<b>DISCLOSURE NOTICE</b>')}</h2>
+    <p><b>IMPORTANT NOTICE:</b> By clicking "I agree" or by accessing or using the Microsoft Learning website, you agree:</p>
+    <p>(a)  If you use your work email account to open your Microsoft Learning account, you agree that Microsoft may share your usage data for any training content and asessments accessed through this website with your employer and you acknowledge that by agreeing to share this data, you are allowing your employer to view reports on your usage data.</p>
+    <p>(b) If you are a Microsoft employee and you use your microsoft.com email account to open your Microsoft Learning account, you agree that Microsoft may share your usage data for any training content and assessments accessed through this website with your management at Microsoft and you acknowledge that by agreeing to share this data, you are allowing your management at Microsoft to view reports on your usage data.</p>
+    <p><b>If you do not agree, do not click "I agree" and do not access or use the Microsoft Learning website.</b><br><br><br><br><br><br><br><br><br><br></p>
+</section>
