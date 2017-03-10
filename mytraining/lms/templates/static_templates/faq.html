@@ -1,0 +1,70 @@
+<%page expression_filter="h"/>
+<%!
+  from django.conf import settings
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%inherit file="../main.html" />
+
+<%!
+  from datetime import date
+%>
+<%block name="pagetitle">${_('Frequently Asked Questions')}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+<section class="container about">
+    <br>
+    <h1 style="text-align: left;">Frequently Asked Questions</h1>
+    <h2><b>SUPPORT HOURS</b></h2>
+    Time Zone: Pacific Standard Time (PST)<br>
+    Period: Monday to Friday, EXCLUDING HOLIDAYS<br>
+    Hours: 9:00 AM - 5:00 PM, ONE DAY RESPONSE TIME<br>
+    <br>    
+    <h2><b>BROWSER COMPATIBILITY</b></h2>
+    <p>The following table shows details about the operating systems and browser support.</p><br>         
+    <style type="text/css">
+         .tg  {border-collapse:collapse;border-spacing:0;outline-style:solid;outline-color:#5882FA;outline-width: 1px;}
+         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-width:1px;border-bottom-style:solid;overflow:hidden;word-break:normal;border-color:#5882FA;}
+         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-bottom-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#5882FA;}
+        
+         .tg .tg-yw4l{vertical-align:top;}
+    </style>
+
+    <table class="tg">
+        <tr bgcolor="#5882FA">
+            <th class="tg-yw4l"></th>
+            <th class="tg-yw4l"><b>Edge</b></th>
+            <th class="tg-yw4l"><b>IE11/IE10</b></th>
+        </tr>
+        <tr bgcolor="#A9D0F5">
+            <td class="tg-yw4l"><b>Windows 8/10</b></td>
+            <td class="tg-yw4l">Yes</td>
+            <td class="tg-yw4l">Yes</td>
+        </tr>
+    </table>
+    <h2><b>GET HELP</b></h2>
+    <p><b>Please read the FAQs below first.</b></p>
+    <p>If you don&#39;t find the answer to your questions, visit the <a href="http://trainingsupport.microsoft.com/en-us/tcml/forum/tcml_mat">support forum</a></p><br>
+
+    <b>Q. How will I be notified of courses that are applicable to my role?</b><br>
+        <p>You will receive an email communication about the availability of a course if one has been developed for your role. As the course library grows, you will find more and more courses that are open for your registration.</p><br>
+    <b>Q. Will I be able to discover open edX courses on Infopedia?</b><br>
+        <p>Yes, the Open edX catalog will be available in Infopedia.</p><br>
+    <b>Q. Will my grades show in my Infopedia transcript?</b><br>
+        <p>Yes.</p><br>    
+    <b>Q. Will my manager see the courses I’ve taken in InfoPedia?</b><br>
+        <p>Yes.</p><br>
+    <b>Q. What is the minimum percentage required to pass the course?</b><br>
+        <p>Each course can have a unique grading policy. Review the About page for the course to understand the requirement to pass the course.</p><br>
+    <b>Q. How do I track my course progress?</b><br>
+        <p>Open your course and select the Progress tab </p><br>
+    <b>Q. How do I register?</b><br>
+        <p>To register, click launch on a course card on Infopedia. You will be registered and enrolled directly from Infopedia.</p><br>
+    <b>Q. I’d like to try the Open edX experience, but no courses are available to me right now.</b>
+        <p>The best way to get a sense of the user experience is by taking the edX Demo course. You can also find over 100 courses delivered by Microsoft that are open to the public on <a href="https://www.edx.org/school/microsoft">https://www.edx.org/school/microsoft.</a></p>
+    <b>Q. What do I do if I am having trouble viewing a video?</b><br>
+        <p>Please click on the download video button located below the video player. See screenshot.</p><br>
+        <img src="/static/comprehensive/images/download_video.png" alt="download_video_img" height="400" weight="400">
+        <br>
+</section>
+</main>

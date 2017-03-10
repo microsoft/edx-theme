@@ -1,0 +1,44 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+<%!
+  from datetime import date
+%>
+<div class="wrapper wrapper-footer">
+ <footer>
+    <div class="colophon" style="width:auto">
+      <nav class="nav-colophon">
+        <ol>
+			<li>
+				&copy; ${_(' {year} Microsoft').format( year=date.today().year)}
+			</li>
+			<li><a href="https://www.microsoft.com/en-us/privacystatement/default.aspx" target="_blank">Privacy & Cookies</a></li>
+			<li><a href="${reverse('tos')}" target="_blank">Terms of Service</a></li>
+			<li><a href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx" target="_blank">Trademarks</a></li>
+			<li><a href="/faq" target="_blank">Support</a></li>
+        </ol>      
+     </nav>
+   </div>
+   <div class="references" style="width:auto" >
+       <a href="https://open.edx.org/" target="_blank"><img class="iconDetails" src="https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png" width="160" alt="Powered by Open edX" style="vertical-align:bottom"></a>
+       <a href="https://azure.microsoft.com" target="_blank"><img src="/static/comprehensive/images/azure_logo.png"alt="on Microsoft Azure" style="vertical-align:bottom" width="160" height="28"></a>
+   </div>
+  </footer>
+</div>
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
