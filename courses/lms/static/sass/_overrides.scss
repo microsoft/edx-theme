@@ -52,6 +52,11 @@ html {
     background-color: $ms-primary-button-hover !important;
 }
 
+// Sign in button hover
+.header-global .nav-courseware li .btn:hover{
+    color: $main-color !important;
+}
+
 //------------------
 // Registration Page
 //------------------
@@ -161,6 +166,13 @@ p a{&:hover, &:focus{
  }
 }
 
+a{&:hover, &:focus{
+   color: $ms-color !important;
+   
+}
+}
+
+
 //------------------
 // View when the user logged in
 // TODO: make this responsive!! 
@@ -210,6 +222,11 @@ header.header-global .user .dropdown-menu li>a:hover,header.global .user .dropdo
 
 .dashboard .profile-sidebar {
     border-top: none !important;
+}
+
+.dashboard .my-courses .course .details .enter-course { &:hover, &:focus
+	{ color: $main-color !important;
+}
 }
 
 //-------------------------
