@@ -43,35 +43,6 @@ from pipeline_mako import render_require_js_path_overrides
 
   % if not allow_iframing:
       <script type="text/javascript">
-	    /* Microsoft customization: Adding cookie related JS functions */
-		  function setCookie(cname, cvalue, exdays) {
-			  var d = new Date();
-			  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-			  var expires = "expires="+d.toUTCString();
-			  document.cookie = cname + "=" + cvalue + "; " + expires;
-		  }
-		  function getCookie(cname) {
-			  var name = cname + "=";
-			  var ca = document.cookie.split(';');
-			  for(var i=0; i<ca.length; i++) {
-				 var c = ca[i];
-				 while (c.charAt(0)==' ') c = c.substring(1);
-				 if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-			  }
-			  return "";
-		  }
-		  function closeCookieBanner() {
-			  var cookieContainer = document.getElementById("cookie-notice");
-				 if (cookieContainer) {
-					 cookieContainer.style.display = "none";
-			  }
-			  var navWrapper = document.getElementsByClassName("nav-wrapper");
-			  if (navWrapper.length > 0) {
-				  navWrapper[0].className = "nav-wrapper";
-			  }
-		  setCookie("cookie-banner","true",365);
-		  }
-		
         /* immediately break out of an iframe if coming from the marketing website */
         (function(window) {
           if (window.location !== window.top.location) {

@@ -46,13 +46,14 @@ site_status_msg = get_site_status_msg(course_id)
   </div>
 </div>
 % endif
+    <script type="text/javascript" src=${static.url('cookieBanner.js')}></script>
 </%block>
   <header id="global-navigation" class="header-global ${"slim" if course else ""}" >
     <div id="cookie-notice" class="cookie-notice">
 	<span class="cookie-notice-title cookie-color">COOKIE USE</span>
 	<span class="cookie-color">By using this site you agree to the use of cookies for analytics, personalized content, and ads.</span>
 	<a id="btnPrivacy" href="http://go.microsoft.com/fwlink/?LinkId=521839" target="_blank">Learn more</a>
-	<span id="btnPrivacyClose" onclick="closeCookieBanner()" class="cookie-close cookie-color">X</span>
+	<span id="btnPrivacyClose" onclick="cookieNotice.closeCookieBanner()" class="cookie-close cookie-color">X</span>
     </div>
     <nav class="nav-wrapper cookie-banner-show wrapper-header" aria-label="${_('Global')}">
     <h1 class="logo">
@@ -146,7 +147,7 @@ site_status_msg = get_site_status_msg(course_id)
             % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
               <li class="item nav-global-05">
                 <a class="btn" href="/courses">${_("Explore Courses")}</a>
-              </li>           
+              </li>
             % endif
           % endif
         </%block>
@@ -163,7 +164,7 @@ site_status_msg = get_site_status_msg(course_id)
 			  <li class="item nav-global-04">
 				<a class="btn-neutral btn-register" style="padding:10px 20px;" href="/register${login_query()}">${_("Register Now")}</a>
 			  </li>
-			% endif			  
+			% endif
 		% endif
           <li class="item nav-courseware-01">
             % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
@@ -219,9 +220,9 @@ site_status_msg = get_site_status_msg(course_id)
 % endif
 
 <%include file="help_modal.html"/>
-## Dont show cookie-banner if already accepted.
+## Don't show cookie-banner if already accepted.
 <script type="text/javascript">
-    if (getCookie("cookie-banner") == "true") {
-           closeCookieBanner();
-     }
+    if (cookieNotice.getCookie("cookie-banner") == "true") {
+        cookieNotice.closeCookieBanner();
+    }
 </script>

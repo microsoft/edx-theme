@@ -66,16 +66,19 @@ import calendar
       $('#register-form').on('ajax:error', function(event, jqXHR, textStatus) {
         toggleSubmitButton(true);
         json = $.parseJSON(jqXHR.responseText);
-		
-		if(json.field === 'country'){
-			json.value = 'A \"Country or Region\" is required';
-		}
-        if (json.field === "honor_code"){
-			json.value = 'You must accept the disclosure notice.';
-		}
-		if (json.field === "username"){
-			json.value = json.value + ' Also space is not allowed in username.';
-		}
+	if (json.field === 'email') {
+		var emailVal = $('#register-form input#email').val();
+		json.value = 'It looks like ' + _.escape(emailVal)  + ' belongs to an existing account. Please follow this <a href="/faq" target="_blank">support</a> link for instructions on how to resolve this.'
+	}	
+	if (json.field === 'country') {
+		json.value = 'A \"Country or Region\" is required';
+	}
+        if (json.field === "honor_code") {
+		json.value = 'You must accept the disclosure notice.';
+	}
+	if (json.field === "username") {
+		json.value = json.value + ' Also space is not allowed in username.';
+	}
 		
         $('.status.message.submission-error').addClass('is-shown').focus();
         $('.status.message.submission-error .message-copy').html(json.value).stop().css("display", "block");
