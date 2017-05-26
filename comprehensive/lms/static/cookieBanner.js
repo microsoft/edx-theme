@@ -1,4 +1,5 @@
 /* Microsoft customization: Adding cookie related JS functions */
+
 oxa = window.oxa || {};
 
 (function (namespace) {
@@ -52,3 +53,19 @@ oxa = window.oxa || {};
 (oxa));
 
 var cookieNotice = new oxa.cookieBanner();
+
+// track the user clicks, anchor/button and exclude the LearnMore link on the banner itself
+window.onload = function () {
+    document.onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+
+        while (target) {
+            if ((target instanceof HTMLAnchorElement || target instanceof HTMLButtonElement) && target.id != 'btnPrivacy') {
+                cookieNotice.closeCookieBanner();
+                break;
+            }
+            target = target.parentNode;
+        }
+    };
+};
