@@ -5,19 +5,23 @@ oxa = window.oxa || {};
 (function (namespace) {
     namespace.cookieBanner = cookieBanner;
     var proto = cookieBanner.prototype;
+    var consentCookieName = "MSCC";
 
     // constructor
     function cookieBanner() {
         var self = this;
 
         // track the user clicks, anchor/button and exclude the LearnMore link on the banner itself
-        $(document).ready(function() {
-            debugger;
-            $("a, button").on("click", function() {
-                if (this.id !== "btnPrivacy") {
-                    self.closeCookieBanner();
-                }
-            });
+        $(document).ready(function () {
+            if (self.getCookie(consentCookieName) !== "true") {
+                $("a, button").on("click", function () {
+                    if (this.id !== "btnPrivacy") {
+                        self.closeCookieBanner();
+                    }
+                });
+            } else {
+                self.closeCookieBanner();
+            }
         });
     };
 
@@ -46,9 +50,8 @@ oxa = window.oxa || {};
         return "false";
     };
 
-    // closes down the cookie banner by setting the cookie-banner cookie
+    // closes down the cookie banner by setting the cookie-banner cookie and unregisters the click events
     proto.closeCookieBanner = function () {
-        debugger;
         var cookieContainer = document.getElementById("cookie-notice");
         if (cookieContainer) {
             cookieContainer.style.display = "none";
@@ -57,7 +60,7 @@ oxa = window.oxa || {};
         if (navWrapper.length > 0) {
             navWrapper[0].className = "nav-wrapper";
         }
-        this.setCookie("cookie-banner", "true", 365);
+        this.setCookie(consentCookieName, "true", 365);
 
         //unregister the anchor/button clicks so we don't keep tracking if the consent is already given
         $("a, button").off("click");

@@ -46,7 +46,6 @@ site_status_msg = get_site_status_msg(course_id)
   </div>
 </div>
 % endif
-    <script type="text/javascript" src=${static.url('cookieBanner.js')}></script>
 </%block>
   <header id="global-navigation" class="header-global ${"slim" if course else ""}" >
     <div id="cookie-notice" class="cookie-notice">
@@ -218,11 +217,6 @@ site_status_msg = get_site_status_msg(course_id)
 % endif
 
 <%include file="help_modal.html"/>
-## Don't show cookie-banner if already accepted.
-<script type="text/javascript">
 
-    if (cookieNotice.getCookie("cookie-banner") == "true") {
-        cookieNotice.closeCookieBanner();
-    }
-
-</script>
+## Track the user consent based on the MSCC cookie availability
+<script type="text/javascript" src=${static.url('cookieBanner.js')}></script>
