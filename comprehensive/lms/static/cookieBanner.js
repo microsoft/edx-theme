@@ -9,6 +9,16 @@ oxa = window.oxa || {};
     // constructor
     function cookieBanner() {
         var self = this;
+
+        // track the user clicks, anchor/button and exclude the LearnMore link on the banner itself
+        $(document).ready(function() {
+            debugger;
+            $("a, button").on("click", function() {
+                if (this.id !== "btnPrivacy") {
+                    self.closeCookieBanner();
+                }
+            });
+        });
     };
 
     // sets the cookie given name, value and expiration days
@@ -38,6 +48,7 @@ oxa = window.oxa || {};
 
     // closes down the cookie banner by setting the cookie-banner cookie
     proto.closeCookieBanner = function () {
+        debugger;
         var cookieContainer = document.getElementById("cookie-notice");
         if (cookieContainer) {
             cookieContainer.style.display = "none";
@@ -47,25 +58,12 @@ oxa = window.oxa || {};
             navWrapper[0].className = "nav-wrapper";
         }
         this.setCookie("cookie-banner", "true", 365);
+
+        //unregister the anchor/button clicks so we don't keep tracking if the consent is already given
+        $("a, button").off("click");
     };
 }
 
 (oxa));
 
 var cookieNotice = new oxa.cookieBanner();
-
-// track the user clicks, anchor/button and exclude the LearnMore link on the banner itself
-window.onload = function () {
-    document.onclick = function (event) {
-        event = event || window.event;
-        var target = event.target || event.srcElement;
-
-        while (target) {
-            if ((target instanceof HTMLAnchorElement || target instanceof HTMLButtonElement) && target.id != 'btnPrivacy') {
-                cookieNotice.closeCookieBanner();
-                break;
-            }
-            target = target.parentNode;
-        }
-    };
-};
