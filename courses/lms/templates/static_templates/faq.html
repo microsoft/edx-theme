@@ -1,0 +1,90 @@
+<%page expression_filter="h"/>
+<%!
+  from django.conf import settings
+  from django.core.urlresolvers import reverse
+  from django.utils.translation import ugettext as _
+%>
+<%inherit file="../main.html" />
+
+<%!
+  from datetime import date
+%>
+<%block name="pagetitle">${_('Frequently Asked Questions')}</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+<section class="static-container about">
+    <br>
+    <h1 style="text-align: left;">Frequently Asked Questions</h1>
+    <h2><b>SUPPORT HOURS</b></h2>
+    Time Zone: Pacific Standard Time (PST)<br>
+    Period: Monday to Friday, EXCLUDING HOLIDAYS<br>
+    Hours: 9:00 AM - 5:00 PM, ONE DAY RESPONSE TIME<br>
+    <br>    
+    <h2><b>BROWSER COMPATIBILITY</b></h2>
+    <p>The following table shows details about the operating systems and browser support.</p><br>         
+    <style type="text/css">
+         .tg  {border-collapse:collapse;border-spacing:0;outline-style:solid;outline-color:#5882FA;outline-width: 1px;}
+         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-width:1px;border-bottom-style:solid;overflow:hidden;word-break:normal;border-color:#5882FA;}
+         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-bottom-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#5882FA;}
+        
+         .tg .tg-yw4l{vertical-align:top;}
+    </style>
+
+    <table class="tg">
+        <tr bgcolor="#5882FA">
+            <th class="tg-yw4l"></th>
+            <th class="tg-yw4l"><b>Edge</b></th>
+            <th class="tg-yw4l"><b>IE11/IE10</b></th>
+        </tr>
+        <tr bgcolor="#A9D0F5">
+            <td class="tg-yw4l"><b>Windows 8/10</b></td>
+            <td class="tg-yw4l">Yes</td>
+            <td class="tg-yw4l">Yes</td>
+        </tr>
+    </table>
+    <h2><b>GET HELP</b></h2>
+    <p><b>Please read the FAQs below first.</b></p>
+    <p>If you don&#39;t find the answer to your questions, <a href="mailto:OXAops@microsoft.com">contact us</a></p><br>
+    <p><b>Q. What do I do if I get an error saying my email address belongs to an existing account when trying to view a course?</b></p>
+    <p>This happens when you have already created an account on https://openedx.microsoft.com using your @microsoft.com email address. 
+To resolve this, please:</p><br>
+    <ol style="list-style: decimal;">
+	<li>Sign-in to the <a href="https://openedx.microsoft.com" target="_blank">https://openedx.microsoft.com</a> site with your @microsoft.com email address.</li>
+        <li>Once signed-in, navigate to the Account Settings page from the drop-down menu next to your name in the top right.</li>
+        <li>On the Accounts Settings page, change your Email Address from your @microsoft.com email address to a personal email address.</li>
+        <li>Open your email client for your personal email and find the email titled "Request to change Microsoft Learning account e-mail".</li>
+        <li>To complete the change to your new personal email address, click the link in the email.</li>
+        <li>Navigate back to Microsoft MyLearning and try to launch the course again or from the link you were provided.</li>
+    </ol>	
+    <b>Q. How will I be notified of courses that are applicable to my role?</b><br>
+        <p>All Open edX courses are available on <a href="https://microsoft.sharepoint.com/sites/infopedia#/Training">MyLearning</a>, and if a course was developed for your role, you will find it under required or recommended training. You may also receive an email communication about certain campaigns. 
+
+</p><br>
+    <b>Q. Will I be able to discover open edX courses on Infopedia?</b><br>
+        <p>Yes, the Open edX catalog will be available in Infopedia. If courses have not been required or recommended to you on <a href="https://microsoft.sharepoint.com/sites/infopedia#/Training">MyLearning</a>, you can locate them in the Infopedia catalog most easily with keyword search. Results improve if you filter on training and add MOOC to your query.  Try these search examples:</p>
+    <p><a href="https://microsoft.sharepoint.com/sites/Infopedia/search/pages/results.aspx?term=%22Microsoft%20SharePoint%202016%22%20MOOC&scope=All">"Microsoft SharePoint 2016" MOOC</a></p>
+    <p><a href="https://microsoft.sharepoint.com/sites/Infopedia/search/pages/results.aspx?term=%22Microsoft%20Exchange%20Server%202016%22%20MOOC&scope=All">"Microsoft Exchange Server 2016" MOOC</a></p>
+    <p><a href="https://microsoft.sharepoint.com/sites/Infopedia/search/pages/results.aspx?term=%22Microsoft%20Project%22%20MOOC&scope=All">"Microsoft Project" MOOC</a></p>
+    </p><br>
+        <img src="/static/courses/images/infopedia_courses.png" alt="infopedia_courses_img" height="400">
+        <br>
+	<b>Q. Will my grades show in my Infopedia transcript?</b><br>
+	     <p>Yes.</p><br>    
+    <b>Q. Will my manager see the courses I’ve taken in InfoPedia?</b><br>
+        <p>Yes.</p><br>
+    <b>Q. What is the minimum percentage required to pass the course?</b><br>
+        <p>Each course can have a unique grading policy. Review the About page for the course to understand the requirement to pass the course.</p><br>
+    <b>Q. How do I track my course progress?</b><br>
+        <p>Open your course and select the Progress tab </p><br>
+    <b>Q. How do I register?</b><br>
+        <p>To register, click launch on a course card on Infopedia. You can register and enroll directly from Infopedia.</p><br>
+    <b>Q. I’d like to try the Open edX experience, but no courses are available to me right now.</b>
+        <p>The best way to get a sense of the user experience is by taking the edX Demo course. You can also find over 100 courses delivered by Microsoft that are open to the public on <a href="https://www.edx.org/school/microsoft">https://www.edx.org/school/microsoft.</a></p><br>
+	<b>Q. What do I do if I am having trouble viewing a video?</b><br>
+        <p>The video player will auto-select the best video quality option for your bandwidth. You can try a lower quality option, or you can download the video if that option is available. See screenshot.
+
+</p><br>
+        <img src="/static/courses/images/download_video.png" alt="download_video_img" height="400">
+        <br>
+</section>
+</main>

@@ -1,0 +1,12 @@
+<%! from django.utils.translation import ugettext as _ %>
+${self.body()}
+<%block name="footer">
+----
+${_("Microsoft respects your privacy. Please read our online Privacy Statement: {privacy_statement}").format(privacy_statement=u"http://go.microsoft.com/fwlink/?LinkId=518021")}
+
+${_("This is a mandatory service communication. To set your contact preferences for other communications, visit the Promotional Communications Manager: {promotional}").format(promotional=u"http://go.microsoft.com/fwlink/?LinkId=243191")}
+
+${_("Microsoft Corporation")}
+${_("One Microsoft Way")}
+${_("Redmond, WA 98052 USA")}
+</%block>

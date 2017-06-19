@@ -1,0 +1,80 @@
+// Discussion Footer styles to look like the rest of site
+.wrapper-footer {
+    footer#footer-openedx {
+        div.colophon {
+            float: left;
+        }
+        div.references {
+            float: right;
+        }
+    }
+}
+
+header.header-global.slim {
+    border-bottom: none;
+
+    .nav-main, .nav-global {
+        display: none;
+    }
+
+    .wrapper-header {
+        h1.logo {
+            a {
+                img {
+                    height: auto !important;
+                }
+            }
+        }
+        
+        h2.course-header {
+            float: left;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #585858;
+            letter-spacing: 0;
+            margin-top: 9px;
+            margin-bottom: 0;
+            text-transform: none;
+            text-shadow: 0 1px 0 #fff;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            span.provider {
+                font: inherit;
+                font-weight: bold;
+            }
+        }
+
+        div.wrapper-user-menu {
+            a.menu-title {
+                background-color: transparent !important;
+                &:hover, &:focus {
+                    text-decoration: none !important;
+                    cursor: pointer !important;
+                    color: $ms-color !important;
+                }
+            }
+            div.user-menu {
+                button {
+                    &:hover, &:focus {
+                        background-color: transparent !important;
+                        text-decoration: none !important;
+                        cursor: pointer !important;
+                        color: $ms-color !important;
+                    }
+                }
+            }
+        }
+
+        a.doc-link {
+            margin-top: 13px;
+            &:hover, &:focus {
+                color: $ms-color !important;
+                text-decoration: none !important;
+                cursor: pointer !important;
+            }
+        }
+
+    }
+}
+  
