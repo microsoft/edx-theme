@@ -12,7 +12,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%
    my_course_org_filter = configuration_helpers.get_value('course_org_filter')
 %>
-% if course.display_org_with_default in my_course_org_filter:
+% if my_course_org_filter == course.display_org_with_default:
 <%block name="headextra">
   ## OG (Open Graph) title and description added below to give social media info to display
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
