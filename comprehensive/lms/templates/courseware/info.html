@@ -16,7 +16,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%
    my_course_org_filter = configuration_helpers.get_value('course_org_filter')
 %>
-% if my_course_org_filter == course.display_org_with_default:
+% if course.display_org_with_default in my_course_org_filter:
 <%block name="pagetitle">${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}</%block>
 
 <%block name="headextra">
