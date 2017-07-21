@@ -19,9 +19,10 @@ install:
   - bash ./scripts/travis-install.sh
 
 before_install:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker pull btelnes/devstack
-  - docker run -d --name devstack --add-host "localhost preview.localhost":127.0.0.1 --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t btelnes/devstack
+  # Login and fetch container from Azure container registry
+  - docker login oxacontainerregistry.azurecr.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker pull oxacontainerregistry.azurecr.io/ci/devstack
+  - docker run -d --name devstack --add-host "localhost preview.localhost":127.0.0.1 --security-opt seccomp=unconfined --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro -t oxacontainerregistry.azurecr.io/ci/devstack
   - docker ps -a
   # Prepare cgroup on the host at /tmp/cgroup to avoid error: "failed to connect to bus: no such file or directory"
   - sudo mkdir -p /tmp/cgroup/systemd && sudo mount -t cgroup systemd /tmp/cgroup/systemd -o ro,noexec,nosuid,nodev,none,name=systemd
