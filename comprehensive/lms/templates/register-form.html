@@ -211,8 +211,21 @@ from student.models import UserProfile
           %endfor
         </select>
       </div>
+      </li>
       % endif
-    </li>
+      % if settings.REGISTRATION_EXTRA_FIELDS['language'] != 'hidden':
+        <li class="field-group">
+        <div class="field ${settings.REGISTRATION_EXTRA_FIELDS['language']} select" id="field-language">
+          <label for="field-language">${_("Preferred Language")}</label>
+          <select id="field-language" name="language" ${'required aria-required="true"' if settings.REGISTRATION_EXTRA_FIELDS['language'] == 'required' else ''}>
+            <option value="">--</option>
+            %for code, language in settings.ALL_LANGUAGES_DICT.iteritems():
+            <option value="${code}">${language}</option>
+            %endfor
+          </select>
+        </div>
+        </li>
+      % endif
   </ol>
 </div>
 

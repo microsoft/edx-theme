@@ -293,11 +293,6 @@ div.u-field-year_of_birth {
     display: none !important;
 }
 
-// Hide the Preferred Language on the Account Settings page
-div.u-field-language_proficiencies {
-    display: none !important;
-}
-
 // Hide the mailing address on the registration page
 #field-address-mailing {
     display: none !important;
@@ -438,5 +433,9 @@ table.faq-table {
     margin-right: 20px;
     cursor: pointer;
     font-weight: 600;
+}
+
+#field-language {
+    margin-top: 10px;
 }
 
