@@ -1,3 +1,5 @@
+# based on https://github.com/alexkaratarakis/gitattributes
+
 ## Default
 * text=auto   eol=lf
 
