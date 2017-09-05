@@ -73,6 +73,10 @@ from third_party_auth import provider, pipeline
           } else {
             location.href="${reverse('dashboard')}";
           }
+	  // take user consent for writing non-essential cookies for successful login upon new page
+	  if (mscc) {
+	     mscc.setConsent();
+	  }
         } else if(json.hasOwnProperty('redirect')) {
           // Shibboleth authentication redirect requested by the server:
           var u=decodeURI(window.location.search);
