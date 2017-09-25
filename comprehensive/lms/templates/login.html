@@ -71,7 +71,7 @@ from third_party_auth import provider, pipeline
             nextUrl = json.redirect_url;
           }
           if (!isExternal(nextUrl)) {
-            location.href=nextUrl;
+            location.href=decodeURIComponent(nextUrl);
           } else {
             location.href="${reverse('dashboard')}";
           }

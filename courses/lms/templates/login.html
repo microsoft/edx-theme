@@ -69,7 +69,7 @@ from third_party_auth import provider, pipeline
             nextUrl = json.redirect_url; // Most likely third party auth completion. This trumps 'nextUrl' above.
           }
           if (!isExternal(nextUrl)) {
-            location.href=nextUrl;
+            location.href=decodeURIComponent(nextUrl);
           } else {
             location.href="${reverse('dashboard')}";
           }

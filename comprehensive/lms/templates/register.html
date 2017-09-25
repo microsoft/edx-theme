@@ -59,7 +59,7 @@ import calendar
           nextUrl = json.redirect_url;
         }
         if (!isExternal(nextUrl)) {
-          location.href=nextUrl;
+          location.href=decodeURIComponent(nextUrl);
         } else {
           location.href="${reverse('dashboard')}";
         }
