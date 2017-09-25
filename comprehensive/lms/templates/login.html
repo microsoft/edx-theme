@@ -64,19 +64,21 @@ from third_party_auth import provider, pipeline
 
       $('#login-form').on('ajax:success', function(event, json, xhr) {
         if(json.success) {
-          var nextUrl = "${login_redirect_url}";
+          var nextUrl = "${login_redirect_url | u}";
           if (json.redirect_url) {
-            nextUrl = json.redirect_url; // Most likely third party auth completion. This trumps 'nextUrl' above.
+            // Most likely third party auth completion (for deep-linking). This overrides 'nextUrl' above.
+            nextUrl = json.redirect_url;
           }
           if (!isExternal(nextUrl)) {
             location.href=nextUrl;
           } else {
             location.href="${reverse('dashboard')}";
           }
-	  // take user consent for writing non-essential cookies for successful login upon new page
-	  if (mscc) {
-	     mscc.setConsent();
-	  }
+
+          // take user consent for writing non-essential cookies for successful login upon new page
+          if (mscc) {
+            mscc.setConsent();
+          }
         } else if(json.hasOwnProperty('redirect')) {
           // Shibboleth authentication redirect requested by the server:
           var u=decodeURI(window.location.search);

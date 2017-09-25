@@ -27,8 +27,8 @@ import calendar
       // new window/tab opening
       $('a[rel="external"], a[class="new-vp"]')
       .click( function() {
-      window.open( $(this).attr('href') );
-      return false;
+        window.open( $(this).attr('href') );
+        return false;
       });
 
       // form field label styling on focus
@@ -52,15 +52,17 @@ import calendar
       });
 
       $('#register-form').on('ajax:success', function(event, json, xhr) {
-        var nextUrl = "${login_redirect_url}";
+        var nextUrl = "${login_redirect_url | u}";
         if (json.redirect_url) {
-          nextUrl = json.redirect_url; // Most likely third party auth completion. This trumps 'nextUrl' above.
+          // Most likely third party auth completion (for deep-linking). This overrides 'nextUrl' above.
+          nextUrl = json.redirect_url;
         }
         if (!isExternal(nextUrl)) {
           location.href=nextUrl;
         } else {
           location.href="${reverse('dashboard')}";
         }
+
         // take user consent for writing non-essential cookies form registration
         if (mscc) {
            mscc.setConsent();
@@ -70,22 +72,22 @@ import calendar
       $('#register-form').on('ajax:error', function(event, jqXHR, textStatus) {
         toggleSubmitButton(true);
         json = $.parseJSON(jqXHR.responseText);
-	
-	if (json.field === 'email') {
-		var emailVal = $('#register-form input#email').val()
-		if (emailVal.toLowerCase().indexOf('@microsoft.com') > -1) {
-			json.value = 'It looks like ' + _.escape(emailVal) + ' belongs to a reserved domain. Please enter a different email address.'
-		}
-	}	
-	if (json.field === 'country'){
-		json.value = 'A \"Country or Region\" is required';
-	}
-        if (json.field === "honor_code"){
-		json.value = 'You must accept the disclosure notice.';
-	}
-	if (json.field === "username"){
-		json.value = json.value + ' Also space is not allowed in username.';
-	}
+
+        if (json.field === 'email') {
+          var emailVal = $('#register-form input#email').val()
+          if (emailVal.toLowerCase().indexOf('@microsoft.com') > -1) {
+            json.value = 'It looks like ' + _.escape(emailVal) + ' belongs to a reserved domain. Please enter a different email address.'
+          }
+        }	
+        if (json.field === 'country') {
+          json.value = 'A \"Country or Region\" is required';
+        }
+        if (json.field === "honor_code") {
+          json.value = 'You must accept the disclosure notice.';
+        }
+        if (json.field === "username") {
+          json.value = json.value + ' Also space is not allowed in username.';
+        }
 		
         $('.status.message.submission-error').addClass('is-shown').focus();
         $('.status.message.submission-error .message-copy').html(json.value).stop().css("display", "block");
