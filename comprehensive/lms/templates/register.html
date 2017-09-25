@@ -52,6 +52,7 @@ import calendar
       });
 
       $('#register-form').on('ajax:success', function(event, json, xhr) {
+        // Escaping using mako's "u" feature
         var nextUrl = "${login_redirect_url | u}";
         if (json.redirect_url) {
           // Most likely third party auth completion (for deep-linking). This overrides 'nextUrl' above.
