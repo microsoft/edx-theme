@@ -211,7 +211,7 @@ from third_party_auth import provider, pipeline
           </li>
           <li class="field required password" id="field-password">
             <label for="password">${_('Password')}</label>
-            <input id="password" type="password" name="password" value="" required aria-required="true" />
+            <input id="password" type="password" name="password" value="" autocomplete="off" required aria-required="true" />
             <span class="tip tip-input">
               <a href="#forgot-password-modal" rel="leanModal" class="pwd-reset action action-forgotpw" id="forgot-password-link" role="button" aria-haspopup="true">${_('Forgot password?')}</a>
             </span>
