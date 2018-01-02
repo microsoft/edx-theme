@@ -129,9 +129,8 @@ div.cta-login-action {
 
 //Change register error background color and text color
 .intro .main-cta #register_error {
-    background: #A80000;
-	color: #ffffff;
-	role: alert;
+    background: #A80000 !important;
+    color: #ffffff !important;
 }
 
 //------------------
