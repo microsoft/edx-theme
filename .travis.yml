@@ -11,6 +11,7 @@ services:
 branches:
   only:
    - oxa/master.fic
+   - oxa/ms.fic
    - oxa/release.fic
    - oxa/dev.fic
 
