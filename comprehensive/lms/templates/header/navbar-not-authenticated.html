@@ -13,8 +13,13 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 %>
 
 <%
-  only_msa_login = configuration_helpers.get_value('ONLY_MSA_LOGIN', False)
-  live_login_url = configuration_helpers.get_value('LIVE_LOGIN_URL', '/auth/login/live')
+  # Instead of assuming a fixed provider, this approach allows for other auth backends to be used (once specified in configs)
+  # When custom authentication is disabled, there could be multiple third party authentication providers specified.
+  # However, for single login purposes, we only need one. These parameters specified the preferred one.
+  enable_custom_auth = configuration_helpers.get_value('ENABLE_CUSTOM_AUTH', settings.FEATURES.get('ENABLE_CUSTOM_AUTH', True))
+  preferred_third_party_auth_login_text = configuration_helpers.get_value('PREFERRED_THIRD_PARTY_AUTH_LOGIN_TEXT', 'Sign in')
+  preferred_third_party_auth_login_url = configuration_helpers.get_value('PREFERRED_THIRD_PARTY_AUTH_LOGIN_URL', '/auth/login/live')
+  
   mktg_site_enabled = static.get_value('ENABLE_MKTG_SITE', settings.FEATURES.get('ENABLE_MKTG_SITE', False))
   courses_are_browsable = settings.FEATURES.get('COURSES_ARE_BROWSABLE')
   allows_login = not settings.FEATURES['DISABLE_LOGIN_BUTTON']
@@ -47,7 +52,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   </div>
   <div class="secondary">
     <div>
-      % if allows_login and not only_msa_login:
+      % if allows_login and enable_custom_auth:
         % if restrict_enroll_for_course:
           <div class="mobile-nav-item hidden-mobile nav-item">
             <a class="register-btn" href="${reverse('course-specific-register', args=[text_type(course.id)])}">${_("Register Now")}</a>
@@ -65,9 +70,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <a class="sign-in-btn" href="/login${login_query()}">${_("Sign in")}</a>
           </div>
         % endif
-      % elif only_msa_login:
+      % elif not enable_custom_auth:
           <div class="mobile-nav-item hidden-mobile nav-item">
-              <a class="sign-in-btn" href="${live_login_url}">${_("Get Started")}</a>
+              <a class="sign-in-btn" href="${preferred_third_party_auth_login_url}">${_(preferred_third_party_auth_login_text)}</a>
           </div>
       % endif
     </div>
