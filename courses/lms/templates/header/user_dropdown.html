@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from openedx.core.djangoapps.user_api.accounts.image_helpers import get_profile_image_urls_for_user
 from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
 from openedx.features.enterprise_support.utils import get_enterprise_learner_generic_name
+display_logout_menuitem = configuration_helpers.get_value('DISPLAY_LOGOUT_MENUITEM', True)
 %>
 
 <%
@@ -18,6 +19,7 @@ profile_image_url = get_profile_image_urls_for_user(self.real_user)['medium']
 username = self.real_user.username
 resume_block = retrieve_last_sitewide_block_completed(username)
 displayname = get_enterprise_learner_generic_name(request) or username
+display_logout_menuitem = configuration_helpers.get_value('DISPLAY_LOGOUT_MENUITEM', True)
 %>
 
 <div class="nav-item hidden-mobile">
@@ -38,6 +40,9 @@ displayname = get_enterprise_learner_generic_name(request) or username
         <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('dashboard')}" role="menuitem">${_("Dashboard")}</a></div>
         <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('learner_profile', kwargs={'username': username})}" role="menuitem">${_("Profile")}</a></div>
         <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('account_settings')}" role="menuitem">${_("Account")}</a></div>
+        
+        % if display_logout_menuitem:
         <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('logout')}" role="menuitem">${_("Sign Out")}</a></div>
+        % endif
     </div>
 </div>
