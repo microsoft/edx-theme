@@ -20,14 +20,14 @@ providers = provider.Registry.displayed_for_login()
   <section class="content">
     <header>
       <h1 class="title title-1">${_("Sign In to {studio_name}").format(studio_name=settings.STUDIO_NAME)}</h1>
-      % if static.get_value('ALLOW_PUBLIC_ACCOUNT_CREATION', settings.FEATURES.get('ALLOW_PUBLIC_ACCOUNT_CREATION')):
+      % if static.get_value('ALLOW_PUBLIC_ACCOUNT_CREATION', settings.FEATURES.get('ALLOW_PUBLIC_ACCOUNT_CREATION')) and configuration_helpers.get_value('ENABLE_CUSTOM_AUTH', True):
           <a href="${reverse('signup')}" class="action action-signin">${_("Don't have a {studio_name} Account? Sign up!").format(studio_name=settings.STUDIO_SHORT_NAME)}</a>
       % endif
     </header>
 
     <article class="content-primary" role="main">
       <form id="login_form" method="post" action="login_post" onsubmit="return false;">
-        % if not static.get_value('ONLY_THIRD_PARTY_AUTH', settings.FEATURES.get('ONLY_THIRD_PARTY_AUTH', False)):
+        % if not static.get_value('ONLY_THIRD_PARTY_AUTH', settings.FEATURES.get('ONLY_THIRD_PARTY_AUTH', True)) or configuration_helpers.get_value('ENABLE_CUSTOM_AUTH', True):
         <fieldset>
           <legend class="sr">${_("Required Information to Sign In to {studio_name}").format(studio_name=settings.STUDIO_NAME)}</legend>
           <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf }" />
@@ -56,7 +56,7 @@ providers = provider.Registry.displayed_for_login()
 
         % if third_party_auth.is_enabled() and providers:
         <div class="login-providers">
-          % if not static.get_value('ONLY_THIRD_PARTY_AUTH', settings.FEATURES.get('ONLY_THIRD_PARTY_AUTH', False)):
+          % if not static.get_value('ONLY_THIRD_PARTY_AUTH', settings.FEATURES.get('ONLY_THIRD_PARTY_AUTH', True)):
           <div class="section-title lines">
             <h3>
               <span class="text">${_("or sign in with")}</span>

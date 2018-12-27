@@ -18,7 +18,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   # However, for single login purposes, we only need one. These parameters specified the preferred one.
   enable_custom_auth = configuration_helpers.get_value('ENABLE_CUSTOM_AUTH', settings.FEATURES.get('ENABLE_CUSTOM_AUTH', True))
   preferred_third_party_auth_login_text = configuration_helpers.get_value('PREFERRED_THIRD_PARTY_AUTH_LOGIN_TEXT', 'Sign in')
-  preferred_third_party_auth_login_url = configuration_helpers.get_value('PREFERRED_THIRD_PARTY_AUTH_LOGIN_URL', '/auth/login/live')
+  preferred_third_party_auth_login_url = configuration_helpers.get_value('PREFERRED_THIRD_PARTY_AUTH_LOGIN_URL')
   
   mktg_site_enabled = static.get_value('ENABLE_MKTG_SITE', settings.FEATURES.get('ENABLE_MKTG_SITE', False))
   courses_are_browsable = settings.FEATURES.get('COURSES_ARE_BROWSABLE')
