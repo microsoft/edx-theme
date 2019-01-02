@@ -1,0 +1,7 @@
+// Include the imports from the original lms-main-v1.scss.  We do this rather than
+// import lms-main-v1.scss directly since that leads to sass compilation errors.  
+@import 'lms/static/sass/build-base-v1';
+@import 'lms/static/sass/build-lms-v1';
+
+// Our overrides for settings we want to change.
+@import 'overrides';

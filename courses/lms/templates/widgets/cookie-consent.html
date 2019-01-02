@@ -1,0 +1,9 @@
+<!-- Cookie Consent -->
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='../static_content.html'/>
+
+<div id="cookie-markup" class="cookie-markup"> </div>
+
+## Track the user consent based on the consent cookie availability
+<script type="text/javascript" src=${static.url('cookieBanner.js')}></script>
