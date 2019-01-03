@@ -18,6 +18,8 @@ from openedx.core.djangolib.markup import HTML, Text
 # App that handles subdomain specific branding
 from branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
+
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 <script type="text/javascript" src="${static.url('js/header/header.js')}"></script>
@@ -34,7 +36,7 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
     </%block>
 % endif
 
-% if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
+% if configuration_helpers.get_value('ENABLE_COOKIE_CONSENT', settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False)):
 	<div id="cookie-notice" class="cookie-notice">
         <svg class="cc-icon cc-v-center" x="0px" y="0px" viewBox="0 0 44 44" height="25px" fill="none" stroke="currentColor"><circle cx="22" cy="22" r="20" stroke-width="2"></circle><line x1="22" x2="22" y1="18" y2="33" stroke-width="3"></line><line x1="22" x2="22" y1="12" y2="15" stroke-width="3"></line></svg>
         <span class="cookie-text">This site uses cookies for analytics, personalized content and ads. By continuing to browse this site, you agree to this use.</span>
@@ -108,7 +110,7 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 % endif
 
 <%include file="../help_modal.html"/>
-% if settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False):
+% if configuration_helpers.get_value('ENABLE_COOKIE_CONSENT', settings.FEATURES.get('ENABLE_COOKIE_CONSENT', False)):
   <!-- Track the user consent based on the cookie-banner cookie availability -->
   <script type="text/javascript" src=${static.url('cookieBanner.js')}></script>
 % endif
