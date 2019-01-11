@@ -3,6 +3,7 @@
 <%!
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+import third_party_auth
 %>
 
 <%block name="headextra">
@@ -65,7 +66,7 @@ textarea {
 
     <form name="action" method="POST">
     <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }" />
-
+    %if not third_party_auth.is_enabled():
 	<ul class="list-input">
 	  <li class="field text" style="padding-bottom: 1.2em">
 		<label for="student_uname">${_('Email or username')}</label>
@@ -90,6 +91,9 @@ textarea {
     </div>
 
 	<hr />
+	%else:
+	<br>
+	%endif
     <p>
       <button type="submit" name="action" value="download_users" style="width: 350px;">
 		${_('Download list of all users (csv file)')}
