@@ -3,7 +3,12 @@
 <%!
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 import third_party_auth
+%>
+
+<%
+enable_sysadmin_administer_courses_form = configuration_helpers.get_value('ENABLE_SYSADMIN_ADMINISTER_COURSES_FORM', True)
 %>
 
 <%block name="headextra">
@@ -123,7 +128,7 @@ textarea {
 
 %endif
 
-%if modeflag.get('courses'):
+%if modeflag.get('courses') and enable_sysadmin_administer_courses_form:
 <h3>${_('Administer Courses')}</h3><br/>
 
 <form name="action" method="POST">
