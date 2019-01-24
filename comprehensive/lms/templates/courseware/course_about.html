@@ -14,10 +14,10 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 %>
 
 <%inherit file="../main.html" />
-## <%
-##    my_course_org_filter = configuration_helpers.get_value('course_org_filter')
-## %>
-## % if my_course_org_filter == course.display_org_with_default:
+<%
+    my_course_org_filter = configuration_helpers.get_value('course_org_filter')
+ %>
+ % if my_course_org_filter == course.display_org_with_default:
 <%block name="headextra">
   ## OG (Open Graph) title and description added below to give social media info to display
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
@@ -373,7 +373,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
     DateUtilFactory.transform(iterationKey=".localized_datetime");
 </%static:require_module_async>
-## % else:
-## <div>Unauthorized access. Error Code: 1001</div>
-## % endif
+% else:
+<div>Unauthorized access. Error Code: 1001</div>
+% endif
 </section>
